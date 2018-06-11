@@ -1,0 +1,22 @@
+{
+  "name": "spotify",
+  "version": "1.0.0",
+  "description": "Answers to the technical questions in the application form for the Internship program.",
+  "main": "Question_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borysonok/Spotify-New-York-City-Technology-Fellowship-Program.git"
+  },
+  "author": "borysonok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/borysonok/Spotify-New-York-City-Technology-Fellowship-Program/issues"
+  },
+  "homepage": "https://github.com/borysonok/Spotify-New-York-City-Technology-Fellowship-Program#readme",
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  }
+}
