@@ -29,28 +29,33 @@ console.log(changePossibilities(6, [1, 2, 3])); // 7
 
 // ========================================================================================== //
 
-// I have also found the solusion that utilizes Dynamic Programming way:
+// Another solusion that utilizes Dynamic Programming way:
 
-function changePossibilities(totalAmount, coinsArray) {
-    let waysForTotalAmount = [];
-    for (let i = 0; i <= totalAmount; i++) {
-        waysForTotalAmount[i] = 0;
-    }
-    // there is 1 way to renturn 0 cents
-    waysForTotalAmount[0] = 1;
-
-    for (let j = 0; j < coinsArray.length; j++) {
-        let coin = coinsArray[j];
-        for (let higherAmount = coin; higherAmount <= totalAmount; higherAmount++) {
-            let higherAmountRemainder = higherAmount - coin;
-            waysForTotalAmount[higherAmount] += waysForTotalAmount[higherAmountRemainder];
-        }
-    }
-
-    return waysForTotalAmount[totalAmount];
+function changePossibilities(totalAmount, denoms) {
+	
+	// Old School way to initialize an array:
+	// let numOfWays = [];
+	// numOfWays[0] = 1;
+	// for(let amount = 1; amount <= totalAmount; amount++){
+	// 	numOfWays[amount] = 0;
+	// }
+	
+	const numOfWays = (new Array(totalAmount + 1)).fill(0);
+    // There is only one way to return "nothing";
+    numOfWays[0] = 1;
+	
+  // Time complexity: O(n*k);
+  // k - number of coins
+  // n - total amount of change;
+  for(let coinIdx = 0; coinIdx < denoms.length; coinIdx++) {
+		for(let amount = 0; amount < numOfWays.length; amount++) {
+			if(denoms[coinIdx] <= amount){
+				numOfWays[amount] += numOfWays[amount - denoms[coinIdx]];
+			}
+		}
+	}
+	return numOfWays[n];
 }
-
-
 
 console.log(changePossibilities(4, [1, 2, 3])); // 4
 console.log(changePossibilities(5, [1, 2, 3])); // 5
